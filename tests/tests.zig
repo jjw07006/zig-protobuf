@@ -16,6 +16,7 @@ const tests = @import("./generated/tests.pb.zig");
 const DefaultValues = @import("./generated/jspb/test.pb.zig").DefaultValues;
 const tests_oneof = @import("./generated/tests/oneof.pb.zig");
 const metrics = @import("./generated/opentelemetry/proto/metrics/v1.pb.zig");
+const selfref = @import("./generated/selfref.pb.zig");
 
 pub fn printAllDecoded(input: []const u8) !void {
     var iterator = protobuf.WireDecoderIterator{ .input = input };
@@ -52,4 +53,10 @@ test "issue #74" {
     var copy = try item.dupe(testing.allocator);
     copy.deinit();
     item.deinit();
+}
+const SelfRefNode = selfref.SelfRefNode;
+
+test "self ref test" {
+    const demo = try SelfRefNode.init(testing.allocator);
+    try testing.expectEqual(@as(i32, 0), demo.version);
 }

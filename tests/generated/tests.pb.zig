@@ -19,6 +19,10 @@ const opentelemetry_proto_metrics_v1 = @import("opentelemetry/proto/metrics/v1.p
 const protobuf_test_messages_proto3 = @import("protobuf_test_messages/proto3.pb.zig");
 /// import package unittest
 const unittest = @import("unittest.pb.zig");
+/// import package selfref
+const selfref = @import("selfref.pb.zig");
+/// import package oneofselfref
+const oneofselfref = @import("oneofselfref.pb.zig");
 /// import package jspb.test
 pub const jspb_test = @import("jspb/test.pb.zig");
 /// import package vector_tile
